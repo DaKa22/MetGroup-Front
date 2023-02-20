@@ -4,6 +4,7 @@ WORKDIR /app
 COPY ./app/package*.json ./
 RUN npm install --silent
 COPY ./app /app
+COPY ./docker/production/.env.production /app/.env.production
 RUN npm run build
 
 #STEP 2 CREATE NGINX SERVER

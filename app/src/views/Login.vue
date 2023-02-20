@@ -22,18 +22,18 @@ const login = () => {
 <template>
   <main class="contenedor">
     <img src="/logo.png" alt="" class="logo"/>
-    <div class="table">
+    <div class="table_">
       <div class="filters">
-        <div>
+        <div class="text-center">
           <label for="">Email:</label>
-          <input type="text" v-model="user.email" />
+          <input type="text" v-model="user.email" class="form-control"/>
           <br />
           <br />
           <label for="">Password:</label>
-          <input type="password" v-model="user.password" />
+          <input type="password" v-model="user.password" class="form-control" />
           <br />
           <br />
-          <button @click="login">Enviar</button>
+          <button type="button" class="btn btn-success mx-auto" @click="login">Enviar</button>
         </div>
       </div>
     </div>
@@ -44,16 +44,17 @@ const login = () => {
 .logo {
   padding-left: 35%;
 }
-.table {
+.table_ {
   width: 18rem;
   /* margin-top: 8rem; */
   margin-left: auto;
   margin-right: auto;
 }
+
 .filters {
-  display: flex;
-  justify-content: flex-end;
-  background-color: #e5e5e7;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  background-color: #e5e5e76a;
   padding: 2rem 3rem;
   border-radius: 0.5rem;
 }

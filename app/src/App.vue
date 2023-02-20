@@ -23,4 +23,5 @@ const route = useRoute()
   width: 90%;
   margin: auto;
 }
+
 </style>
