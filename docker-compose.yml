@@ -4,7 +4,7 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      image: docker.pkg.github.com/guadalupemgroup/mcfv2.0-backend/front_metgroup:latest
+      image: docker.pkg.github.com/daka22/metgroup-front/front_metgroup:latest
       container_name: front_metgroup
       restart: always
       networks:
