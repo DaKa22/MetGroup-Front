@@ -36,27 +36,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // console.log(to);
   const token = localStorage.getItem('token') || null
-  if (to.name != 'login' && token == null) {
-    next({
-      name: 'login'
-    })
-  }
-  if (to.name == 'login' && token != null) {
-    next({
-      name:home
-    })
-  }
-  if (to.meta.auth) {
-    if (token != null) {
-      next()
-    }else{
-      next({
-        name:login
-      })
-    }
-  }
+  if (to.name != 'login' && token == null) return next({ name: 'login' })
+  if (to.name == 'login' && token != null) return next({ name: 'home' })
+  if (to.meta.auth) return token != null ? next() : next({ name: 'login' })
   next()
 })
 

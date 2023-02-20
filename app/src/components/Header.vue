@@ -1,37 +1,32 @@
 <script setup>
-import { ref } from "@vue/reactivity";
-import { useRouter, useRoute } from "vue-router";
-const router = useRouter();
-const route = useRoute();
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../store/auth'
 
-const tokenProps = defineProps(['token']);
-const token = ref(tokenProps);
-console.log(token);
+const router = useRouter();
+const authStore = useAuthStore()
+
 const out = () => {
   localStorage.removeItem('token')
-
-  token.value=null
-  router.push({
-      name:'home'
-    })
+  authStore.update(null)
+  router.push({ name: 'login' })
 };
+
 </script>
 
 <template>
   <div>
-    <nav class="nav">
-      <RouterLink to="/">
-        <img src="/logo.png" alt="" />
+    <nav class='nav'>
+      <RouterLink to='/'>
+        <img src='/logo.png' alt='' />
       </RouterLink>
 
-      <div class="navegacion">
-        <RouterLink to="/login" v-if="token == null">Login</RouterLink>
-        <a @click="out" v-else class="logout">Logout</a>
-        <RouterLink to="/store">Store</RouterLink>
-        <RouterLink to="/article">Article</RouterLink>
+      <div class='navegacion'>
+        <RouterLink to='/login' v-if='!authStore.token'>Login</RouterLink>
+        <a @click='out' v-else class='logout'>Logout</a>
+        <RouterLink to='/store'>Store</RouterLink>
+        <RouterLink to='/article'>Article</RouterLink>
       </div>
     </nav>
-    <!-- {{token}} -->
   </div>
 </template>
 
