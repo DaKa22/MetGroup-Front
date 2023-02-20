@@ -1,26 +1,18 @@
 <script setup>
-import { ref } from "@vue/reactivity";
-import { RouterLink, RouterView, useRoute } from "vue-router";
-const Login from "./views/Login.vue";
-const Layout from "./views/Layout.vue";
-import { computed } from "@vue/runtime-core";
-const route = useRoute()
-
-const page = computed(()=> {
-  
-  if (route.meta.login) {
-    return 'Login'
-  }
-  return 'Layout'
-})
-console.log(page)
+import { ref } from '@vue/reactivity';
+import { RouterLink, RouterView } from 'vue-router'
+import Header from './components/Header.vue';
+const token = ref();
+const logout = (e) => {
+  token.value = e
+}
 </script>
 
 <template>
   <div>
-    <!-- <Header :token ="token"/> -->
+    <Header :token ="token"/>
     <main class="contenedor">
-      <component :is="page"><RouterView  /></component>
+      <RouterView @logout ="logout"/>
     </main>
   </div>
 </template>

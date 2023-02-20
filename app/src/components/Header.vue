@@ -31,7 +31,7 @@ const out = () => {
         <RouterLink to="/article">Article</RouterLink>
       </div>
     </nav>
-    {{token}}
+    <!-- {{token}} -->
   </div>
 </template>
 
