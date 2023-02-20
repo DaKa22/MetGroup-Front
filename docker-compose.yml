@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  front_metgroup:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: docker.pkg.github.com/guadalupemgroup/mcfv2.0-backend/front_metgroup:latest
+      container_name: front_metgroup
+      restart: always
+      networks:
+          - network_privated
+          - proxy
+networks:
+    network_privated:
+        driver: bridge
+    proxy:
+        driver: bridge
+        name: proxy
+        external: true
