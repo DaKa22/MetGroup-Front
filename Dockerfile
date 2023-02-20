@@ -1,5 +1,5 @@
 #STEP 1 BUILD VUE PROJECT
-FROM node:14.17.6-alpine AS build
+FROM node:16-alpine AS build
 WORKDIR /app
 COPY ./app/package*.json ./
 RUN npm install --silent
